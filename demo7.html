@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script>
+	/*function foo(x){
+		var tmp = 3;
+		return function(y){
+			console.log(x + y + (++tmp));
+		}
+	}
+	var bar = foo(2);
+	console.log(bar(10))*/
+
+	/*function foo(x){
+		var tmp = 3;
+		return function(y){
+			alert(x + y + tmp);
+			x.memb = x.memb ? x.memb + 1 : 1;
+			alert(x.memb);
+		}
+	}
+
+	var age = new Number(2);
+	var bar = foo(age);
+	bar(10);*/
+
+
+	/*function a(){
+		var n = 0 ;
+		function inc(){
+			n++;
+			console.log(n);
+		}
+		inc();
+		inc();
+	}
+	a();*/
+
+
+	/*function a(){
+		var n = 0;
+		this.inc = function(){
+			n++;
+			console.log(n);
+		}
+	}
+	a();
+	var c = new a();
+	c.inc()*/
+
+
+	function createFunctions(){
+		var result = new Array();
+		for (var i = 0; i < 10; i++) {
+			result[i] = function(){
+				return i;
+			}
+		}
+		return result;
+	}
+	var funcs = createFunctions();
+	for (var i = 0; i < funcs.length; i++) {
+		console.log(funcs[i]())
+	}
+	
+</script>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+</html>
+
+<script>
+	var m = [1,2,3,4,5,3,6,5,8];
+	var n = [];
+	for (var i = 0; i < m.length; i++) {
+		if (n.indexOf(m[i]) == -1) {
+			n.push(m[i]);
+		}
+	}
+	console.log(n);
+
+
+	function unique1(array){
+		var n = [];	//一个新的临时数组
+		//遍历当前数组
+		for(let i = 0; i < array.length;i++){
+			/*如果当前数组的第i已经保存进了临时数组，那么跳过，
+			否则把当前项push到临时数组里面
+			*/
+			if (n.indexOf(array[i]) == -1) {
+				n.push(array[i]);
+			}
+			return
+		}
+	}
+
+
+	//速度最快，占空间最多(空间换时间)
+	function unique2(array){
+		var n = {}, r = [], len = array.length,val,type;
+		for(var i = 0;i<len;i++){
+			val = array[i];
+			type = typeof val;
+			if (!n[val]) {
+				n[val] = [type];
+				r.push(val);
+			}else if (n[val].indexOf(type) < 0) {
+				n[val].push(type);
+				r.push(val);
+			}
+		}
+		return r;
+	}
+
+
+	//数组下标判断法
+	function unique3(array){
+		var n = [array[0]];
+		//从第二项开始遍历
+		for (var i = 0; i < array.length; i++) {
+			if (array.indexOf(array[i]) == i) {
+				n.push(array[i])
+			}
+		}
+		return n;
+	}
+
+
+	//排序后相邻去除法
+	function unique4(array){
+		//将相同的值相邻，然后遍历去除重复值
+		array.sort();
+		var re = [array[0]];
+		for(var i=1;i<array.length;i++){
+			if (array[i] !== re[re.length - 1]) {
+				re.push(array[i]);
+			}
+		}
+		return re;
+	}
+
+
+
+	//优化遍历数组法
+	//思路：获取没重复的最右一值放入新数组
+	function uniques(array){
+		var r = [];
+		for (var i = 0,l = array.length; i < l; i++) {
+			for(var j = i + 1;j < l;j++){
+				if (array[i] === array[j]) {
+					j = ++i;
+				}
+			
+			}
+			r.push(array[i]);
+		}
+		return r;
+	}
+</script>

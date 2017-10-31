@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script>
+	/*function foo(x,y){
+		if (typeof x === 'number' && typeof y === 'number') {
+			return x+y;
+		}else
+			return 0;
+	}
+	console.log(foo(2,3));*/
+
+
+	if (!Function.prototype.bind) {
+		Function.prototype.bind = function(oThis){
+			if (typeof this !== 'function') {
+				throw new TypeError('what is trying to be bound is not callable');
+			}
+			var aArgs = Array.prototype.slice.call(arguments,1),
+				fToBind = this,
+				fNOP = function(){},
+				fBound = function(){
+					return fToBind.apply(this instanceof fNOP ? this : oThis,aArgs.concat(Array.prototype.slice.call(arguments)) );
+				};
+			fNOP.prototype = this.prototype;
+			fBound.prototype = new fNOP();
+
+			return fBound;
+		}
+	}
+
+
+
+	function foo(){
+		this.b = 100;
+		return this.a;
+	}
+
+	var func = foo.bind({a:1});
+
+	console.log(func());
+	console.log(new func());
+</script>
