@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="vue.js"></script>
+	<script>
+		window.onload = function(){
+			new Vue({
+				el:'#box',
+				data:{
+					/*c:{color:'red'},
+					b:{backgroundColor:'green'}*/
+
+					a:{
+						color:'orange',
+						backgroundColor:'lightblue'
+					}
+				},
+			})
+		}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<strong :style="a">this is test</strong>
+	</div>
+</body>
+</html>
