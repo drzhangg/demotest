@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+    <script>
+        window.onload = function(){
+            new new Vue({
+                el:'#app',
+                data:{
+                    // foodList:['apple','hanumber','money']
+                    foodList:[
+                        {
+                            name:'apple',
+                            price:10,
+                            discount:.5
+                        },
+                        {
+                            name:'humbamer',
+                            price:15,
+                            discount:.8
+                        },
+                        {
+                            name:'money',
+                            price:10000
+                        }
+                    ]
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <div id="app">
+        <ul v-for="food in foodList">
+            <li>{{food.name}} ${{food.discount ? food.price * food.discount : food.price}}</li>
+        </ul>
+    </div>
+</body>
+</html>

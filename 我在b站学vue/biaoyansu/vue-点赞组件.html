@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点赞</title>
+    <style>
+        .liked{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <like></like>
+    </div>
+    <template id="like-component-tpl">
+        <button :class="{liked: liked}" @click="toggle_like()">
+            👍 {{like_count}}
+        </button>
+    </template>
+</body>
+</html>
+<script src="../vue.js"></script>
+<script src="js/main3.js"></script>
